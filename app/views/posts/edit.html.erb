@@ -1,0 +1,32 @@
+<h1>Test<h1>
+
+<%= form_for(@post) do |f| %>
+    <div>
+    <div class="field">
+    <%= f.collection_select :user_id, User.order(:username),:id,:username, include_blank: true %>
+    </div>
+
+    <div>
+    <div class="field">
+    <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    <div>
+    
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="field">
+      <%= f.label :slug %>
+      <%= f.text_area :tag%>
+    </div>
+  
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>

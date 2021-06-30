@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        current_user
     end
 
     def edit
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
       
     def create
         @post = Post.new(post_params)
-    
+        current_user
         respond_to do |format|
           if @post.save
             format.html { redirect_to action: "index", category_id: @post.category.id , notice: 'Post was successfully created.' }
@@ -60,4 +61,10 @@ class PostsController < ApplicationController
       def post_params
         params.require(:post).permit(:title, :body, :tag, :category_id, :user_id)
       end
+
+      def current_user
+        @user = User.find(session[:user_id])
+        @user.id
+      end
+
 end

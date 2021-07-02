@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to categories_path
         else
-            #erroer message on fail
+            #error message on fail
             message = "Something went wrong, Please try again"
             redirect_to login_path, notice: message
         end
@@ -16,6 +16,11 @@ class SessionsController < ApplicationController
 
     def home
      redirect_to categories_path
+    end
+
+    def destroy
+        reset_session
+        redirect_to home_path
     end
 
 end

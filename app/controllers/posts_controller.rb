@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       
     def create
         @post = Post.new(post_params)
-        current_user
+        curr
         respond_to do |format|
           if @post.save
             format.html { redirect_to action: "index", category_id: @post.category.id , notice: 'Post was successfully created.' }
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
           format.html { redirect_to categories_path, notice: 'Post was successfully destroyed.' }
           format.json { head :no_content }
         end
-      end
+    end
 
     private
       # Use callbacks to share common setup or constraints between actions.

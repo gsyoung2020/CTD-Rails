@@ -1,6 +1,6 @@
 
 <h1>Categories</h1>
-<p><%= @user.username%></p>
+<p>Welcome, <%= @user.username%></p>
 <table>
   <thead>
     <tr>
@@ -21,4 +21,5 @@
 </table>
 <br>
 <%= link_to 'New Post', new_post_path %>
+<%= link_to 'Profile', user_path(@user.id)%>
 <%= link_to 'Logout', logout_path, data: {confirm: "Are you sure?"} %>

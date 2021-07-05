@@ -1,0 +1,10 @@
+<div>
+    <strong><%= current_user.username %> says:</strong>
+    <%= comment.body %>
+    <p> Created at: <%= comment.created_at %> </p>
+    <p> Last Edited: <%= comment.updated_at %> </p>
+    <div class="comment-admin">
+        <%= link_to "Edit", edit_post_comment_path(@post, comment) %>
+        <%= link_to "Delete", [@post, comment], method: :delete %>
+    </div>
+</div>

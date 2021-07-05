@@ -19,7 +19,6 @@ class PostsController < ApplicationController
       
     def create
         @post = Post.new(post_params)
-        curr
         respond_to do |format|
           if @post.save
             format.html { redirect_to action: "index", category_id: @post.category.id , notice: 'Post was successfully created.' }

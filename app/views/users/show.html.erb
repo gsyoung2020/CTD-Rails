@@ -1,8 +1,28 @@
+<%= link_to 'Edit', edit_user_path  %>
+<%= link_to 'Home', categories_path  %>
+<br>
 <h2>Username: </h2>
-<%= current_user.username %>
+<%= @user.username %>
 
 <h2>Email: </h2>
 <%= @user.email%>
+<br>
+<h3> Posts </h3>
+<tbody>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.title, post_path(user.id)%></td><br>
+  </tr>
+<% end %>
+</tbody>
 
-<%= link_to 'Edit', edit_user_path  %>
-<%= link_to 'Home', categories_path  %>
+<br>
+<h3> Comments </h3>
+<tbody>
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= link_to comment.body, post_path(comment.post_id)%></td><br>
+  </tr>
+<% end %>
+</tbody>
+

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update]
+    before_action :set_user, only: [:edit, :update, :destroy]
     
     def new
         @user = User.new
@@ -18,12 +18,22 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id]) 
-        @users = @user.posts
+        @users = @user.posts.order(:updated_at).page params[:page]
 
         @comments = @user.comments
     end
 
     def edit
+    end
+
+    def destroy
+        Post.where('user_id LIKE ?', session[:user_id]).update_all(user_id: 18)
+        Comment.where('user_id LIKE ?', session[:user_id]).update_all(user_id: 18)
+        @user.destroy
+        respond_to do |format|
+          format.html { redirect_to home_path, notice: 'Post was successfully destroyed.' }
+          format.json { head :no_content }
+        end
     end
 
     def update

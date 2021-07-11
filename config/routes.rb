@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  
   root 'sessions#home'
@@ -18,5 +19,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
   get '/home', to: 'houses#show'
+
+  get 'search' => 'search#index'
 
 end

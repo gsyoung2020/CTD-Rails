@@ -25,8 +25,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
+# Ruby gem for Rails that parses, stores, retreives and formats hashtags in your model.
+gem 'simple_hashtag'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks
+gem 'kaminari'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

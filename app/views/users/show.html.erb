@@ -1,4 +1,5 @@
 <%= link_to 'Edit', edit_user_path  %>
+<%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are you sure? THIS ONLY DELETES YOUR ACCOUNTS NOT POSTS"} %>
 <%= link_to 'Home', categories_path  %>
 <br>
 <h2>Username: </h2>
@@ -14,6 +15,7 @@
     <td><%= link_to user.title, post_path(user.id)%></td><br>
   </tr>
 <% end %>
+<%= paginate @users %>
 </tbody>
 
 <br>

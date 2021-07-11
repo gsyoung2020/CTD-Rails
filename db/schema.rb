@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_191501) do
+ActiveRecord::Schema.define(version: 2021_07_09_005309) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 2021_07_07_191501) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "hash_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_hash_tags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hash_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hash_tag_id"], name: "index_post_hash_tags_on_hash_tag_id"
+    t.index ["post_id"], name: "index_post_hash_tags_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -55,6 +70,13 @@ ActiveRecord::Schema.define(version: 2021_07_07_191501) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "simple_hashtag_hashtags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_simple_hashtag_hashtags_on_name"
   end
 
   create_table "users", force: :cascade do |t|

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get '/home', to: 'houses#show'
 
   get 'search' => 'search#index'
+  get 'delete_posts', to: 'users#delete_posts'
 
 end

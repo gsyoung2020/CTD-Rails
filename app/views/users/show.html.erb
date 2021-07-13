@@ -1,6 +1,7 @@
 <%= link_to 'Edit', edit_user_path  %>
-<%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are you sure? THIS ONLY DELETES YOUR ACCOUNTS NOT POSTS"} %>
+<%= link_to 'Delete my account', @user, method: :delete, data: {confirm: "Are you sure? THIS ONLY DELETES YOUR ACCOUNTS NOT POSTS"} %>
 <%= link_to 'Home', categories_path  %>
+<%= link_to 'Delete all posts', delete_posts_path(current_user.id)%>
 <br>
 <h2>Username: </h2>
 <%= @user.username %>

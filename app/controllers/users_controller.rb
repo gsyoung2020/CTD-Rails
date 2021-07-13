@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update, :destroy]
+    before_action :set_user, only: [:edit, :update, :destroy, :show]
     
     def new
         @user = User.new
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id]) 
         @users = @user.posts.order(:updated_at).page params[:page]
 
         @comments = @user.comments
@@ -46,6 +45,15 @@ class UsersController < ApplicationController
             format.json { render json: @user.errors, status: :unprocessable_entity }
           end
         end
+    end
+
+    def delete_posts
+        #byebug
+        user_number = params[:format].to_i
+        @user = User.find(user_number)
+        @user.posts.destroy_all
+        @user.comments.destroy_all
+        redirect_to categories_path
     end
 
     private

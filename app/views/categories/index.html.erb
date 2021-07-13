@@ -104,9 +104,9 @@ th, td {
 		<ul>
 			<li><a class="logo">Welcome, <%= @user.username%></a></li>
 			<div class="items">
-			<li><a><%= link_to 'New Post', new_post_path %></a></li>
-			<li><a><%= link_to 'Profile', user_path(@user.id)%></a></li>
-			<li><a><%= link_to 'Logout', logout_path, data: {confirm: "Are you sure?"} %></a></li>
+        <li><a><%= link_to 'New Post', new_post_path %></a></li>
+        <li><a><%= link_to 'Profile', user_path(@user.id)%></a></li>
+        <li><a><%= link_to 'Logout', logout_path, data: {confirm: "Are you sure?"} %></a></li>
 			<div>
 			<li><%= render 'search/form', post: @post %></li>
 		</ul>

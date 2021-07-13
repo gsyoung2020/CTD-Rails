@@ -58,7 +58,9 @@ a {
 	.rightColumn { position: absolute; top: 0; right: 0; width: 18.75em; }   
 }
 
-
+h3{
+  text-align: center;
+}
 
 </style>
 
@@ -74,7 +76,8 @@ a {
 
 
 <body>
-  <h1> <%= @post.title %> </h1>
+  <h1> <%= @post.title %> [<%= @post.category.name %>]</h1>
+  <h3> By: <%= link_to @post.user.username, user_path(@post.user.id)%></h3>
   <header>
     <nav>
       <ul class="nav inline-items">

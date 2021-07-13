@@ -1,7 +1,7 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-label {
+label, h1 {
   color: red;
 }
 
@@ -66,7 +66,7 @@ textarea {
 
 
 
-<h1>Test<h1>
+<h1>Post<h1>
 
 <%= form_for(@post) do |f| %>
     <div class = "field">
@@ -92,7 +92,7 @@ textarea {
 
     <div class="feedback-input">
     <span class="textarea" role="textbox" contenteditable>
-      <%= f.label :slug %>
+      <%= f.label :hashtags %>
       <%= f.text_area :tag%>
     </span>
     </div>

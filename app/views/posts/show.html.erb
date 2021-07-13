@@ -1,39 +1,121 @@
-<%= link_to 'Home', categories_path  %>
-<%= link_to 'Current Week', category_posts_path(@post.category.id) %>
-<br>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<style>
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+body { margin: 0; }
 
-<p>
-<strong>Hashtags:</strong>
-<% @post.tag.to_s.split(' ').each do |word| %>
-  <% if word.start_with?('#') %>
-    <%= link_to word, search_path(query: word) %>
-  <%else %>
-    <%= word %>
-  <%end %>
-<% end %>
-</p>
+.columnsContainer, footer, header { position: relative; margin: .5em; }
 
-<%= link_to 'Edit', edit_post_path(@post) %>
-<%= link_to 'Delete', @post, method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Back', :back %>
+.leftColumn, .rightColumn, .fullColumn, footer, header {  border: 1px solid  #ccc; padding: 1.25em; }
 
-<br>
-<div id ="comments">
-<% if @post.comments.present? %>
-  <h1>Comments</h1>
-<% end %>
-    <%= render @post.comments %>
-    <h2> Add a comment<h2>
-    <%= render partial: "comments/form", locals: {comment: @post.comments.new} %>
-</div>
+.leftColumn { margin-bottom: .5em; }
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+.nav {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.nav > li,
+.nav > li > a {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.inline-items {
+  margin-top: 0;
+}
+
+.inline-items li {
+  margin-left: 0;
+  border-left: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.inline-items li:first-child {
+  margin-left: 0;
+  border: none;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.inline-items li:last-child {
+  padding-right: 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 47.5em ) {
+  .leftColumn { margin-right: 19.5em; }
+
+	.rightColumn { position: absolute; top: 0; right: 0; width: 18.75em; }   
+}
+
+
+
+</style>
+
+
+<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>  <%= @post.title %> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+
+<body>
+  <h1> <%= @post.title %> </h1>
+  <header>
+    <nav>
+      <ul class="nav inline-items">
+        <li><a> <%= link_to 'Home', categories_path  %> </a></li>
+        <li><a> <%= link_to 'Back', :back %>  </a></li>
+        <li><a> <%= link_to 'Current Week', category_posts_path(@post.category.id) %> </a></li>
+        <li><a> <%= link_to 'Edit', edit_post_path(@post) %> </a></li>
+        <li><a> <%= link_to 'Delete', @post, method: :delete, data: {confirm: "Are you sure?"} %> </a></li>
+      </ul>
+    </nav>
+  </header>
+     
+  <div class="columnsContainer">
+    <div class="leftColumn">
+      <h2>Body:</h2>
+      <p><%= @post.body %></p>
+    </div>
+  
+    <div class="rightColumn">
+      <h2>Hashtags:</h2>
+        <p>
+        <% @post.tag.to_s.split(' ').each do |word| %>
+          <% if word.start_with?('#') %>
+            <%= link_to word, search_path(query: word) %>
+          <%else %>
+            <%= word %>
+          <%end %>
+        <% end %>
+        </p>
+    </div>
+  </div>
+
+  <div class="columnsContainer">
+    <div class="fullColumn">
+  <% if @post.comments.present? %>
+    <h1>Comments</h1>
+  <% end %>
+      <%= render @post.comments %>
+      <h2> Add a comment<h2>
+      <%= render partial: "comments/form", locals: {comment: @post.comments.new} %>
+      </div>
+  </div>
+</body>
+

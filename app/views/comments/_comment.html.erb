@@ -1,5 +1,5 @@
 <div>
-    <strong><%= current_user.username %> says:</strong>
+    <strong><%=link_to current_user.username, user_path(comment.user.id) %> says:</strong>
     <%= comment.body %>
     <p> Created at: <%= comment.created_at %> </p>
     <p> Last Edited: <%= comment.updated_at %> </p>

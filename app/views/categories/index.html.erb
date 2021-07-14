@@ -17,6 +17,7 @@ body {
 h1 {
 	color: #079bc4;
 	padding: 10px;
+  font-family: "Mukta", sans-serif;
 }
 
 td, p, a, th {
@@ -47,8 +48,12 @@ nav{
   border: 1px solid #000;
   border-left: none;
   border-right: none;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 nav ul{
+  padding-right: 110px;
   display: flex;
   list-style: none;
   flex-wrap: wrap;
@@ -95,6 +100,9 @@ th, td {
 	border-bottom: 2px solid white;
 }
 
+.main {
+  margin-top: 65px; /* Add a top margin to avoid content overlay */
+}
 
 </style>
 
@@ -114,7 +122,8 @@ th, td {
 
 </header>
 
-<h1>Categories</h1>
+<div class="main">
+<h1>Course Sections</h1>
 
 
 <table class="data">
@@ -135,4 +144,5 @@ th, td {
   </tbody>
 </table>
 <br>
+</div>
 
